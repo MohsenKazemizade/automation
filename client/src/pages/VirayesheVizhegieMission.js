@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import DropDownMamooriat from '../components/DropDownMamooriat';
 
 const VirayesheVizhegieMission = () => {
+  const [data, setData] = useState([]);
+
+  const loadData = async () => {
+    const response = await axios.get(
+      'http://localhost:5000/api/get/mission_requerments'
+    );
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
   return (
     <div>
       <Header />
@@ -43,19 +57,23 @@ const VirayesheVizhegieMission = () => {
                 </tr>
               </thead>
               <tbody className='divide-y divide-gray-200 overflow-scroll'>
-                <tr>
-                  <td className='px-3 py-4 text-sm text-gray-800 whitespace-nowrap'>
-                    ویژگیها 1
-                  </td>
-                  <td>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
-                    />
-                  </td>
-                </tr>
-                <tr>
+                {data.map(item => {
+                  return (
+                    <tr key={item.ID}>
+                      <td className='px-3 py-4 text-sm text-gray-800 whitespace-nowrap'>
+                        {item.requerment_name}
+                      </td>
+                      <td>
+                        <input
+                          id='default-checkbox'
+                          type='checkbox'
+                          className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
+                {/* <tr>
                   <td className='px-3 py-4 text-sm text-gray-800 whitespace-nowrap'>
                     ویژگیها 2
                   </td>
@@ -126,7 +144,7 @@ const VirayesheVizhegieMission = () => {
                       className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
                     />
                   </td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </div>

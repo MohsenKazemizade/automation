@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const fs = require('fs');
 const readline = require('readline');
-const { query } = require('express');
+// const { query } = require('express');
 
 const app = express();
 
@@ -44,6 +44,56 @@ app.get('/', (req, res) => {
 // get all fields from database
 app.get('/api/get', (req, res) => {
   const sqlSelectAll = 'SELECT * FROM sep_list';
+  db.query(sqlSelectAll, (err, result, fields) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// get all data from main_mission
+app.get('/api/get/mainmission', (req, res) => {
+  const sqlSelectAllMission = 'SELECT * FROM main_mission';
+  db.query(sqlSelectAllMission, (err, result, fields) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// post data to main_mission
+app.post('/api/post/mainmission', (req, res) => {
+  const { name } = req.body;
+  const sqlInsert = 'INSERT INTO main_mission (Name) VALUES (?)';
+  db.query(sqlInsert, [name], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+
+// get all data from sub_mission
+app.get('/api/get/submission', (req, res) => {
+  const sqlSelectAllSubMission = 'SELECT * FROM sub_mission';
+  db.query(sqlSelectAllSubMission, (err, result, fields) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// post data to sub_mission
+app.post('/api/post/submission', (req, res) => {
+  const { name, id } = req.body;
+  const sqlInsert =
+    'INSERT INTO sub_mission (Name,id_mainmission) VALUES (?,?)';
+  db.query(sqlInsert, [name, id], (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+});
+
+// get all Mission_Requerments from requermets_list
+app.get('/api/get/mission_requerments', (req, res) => {
+  const sqlSelectAll = 'SELECT * FROM requermets_list';
   db.query(sqlSelectAll, (err, result, fields) => {
     if (err) throw err;
     res.send(result);
