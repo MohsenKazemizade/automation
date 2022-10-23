@@ -1,6 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 
-const MainMissionTableWithCheckbox = ({ data, onChange }) => {
+const MainMissionTableWithCheckbox = ({ data, addIdData, clearIdData }) => {
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = e => {
+    if (checked) {
+      clearIdData(e);
+    } else {
+      addIdData(e);
+    }
+    setChecked(!checked);
+  };
+
   return (
     <table className='relative min-w-full divide-y divide-gray-200'>
       <thead className='bg-gray-100'>
@@ -19,14 +31,15 @@ const MainMissionTableWithCheckbox = ({ data, onChange }) => {
           return (
             <tr key={item.ID}>
               <td className='px-3 py-4 text-sm text-gray-800 whitespace-nowrap'>
-                <label htmlFor={item.ID}>{item.Name}</label>
+                <label htmlFor='id'>{item.Name}</label>
               </td>
               <td>
                 <input
+                  name='id'
                   id={item.ID}
-                  onChange={item => onChange(item)}
+                  onChange={handleChange}
                   type='checkbox'
-                  className='w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                  className='m-2 w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
                 />
               </td>
             </tr>
