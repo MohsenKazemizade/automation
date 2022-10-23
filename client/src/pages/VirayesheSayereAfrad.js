@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 import TableEtelaateDasteha from '../components/TableEtelaateDasteha';
 
 const VirayesheSayereAfrad = () => {
@@ -18,14 +18,14 @@ const VirayesheSayereAfrad = () => {
             </div>
 
             <div>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='rounded-lg h-16 flex text-center justify-center'>
               <span className='flex items-center'>ماموریت فرعی :</span>
             </div>
 
             <div>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='rounded-lg h-12 flex text-center justify-center'>
               <span className='flex text-xl items-center'>

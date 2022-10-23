@@ -91,6 +91,18 @@ app.post('/api/post/submission', (req, res) => {
   });
 });
 
+// update data to sub_mission item
+app.put('/api/update/submission', (req, res) => {
+  const { ids, subId } = req.body;
+  console.log();
+  const sqlSelectAll =
+    'UPDATE sub_mission SET id_requirements = ? WHERE ID = ?';
+  db.query(sqlSelectAll, [ids, subId], (err, result, fields) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
 // get all Mission_Requerments from requermets_list
 app.get('/api/get/mission_requerments', (req, res) => {
   const sqlSelectAll = 'SELECT * FROM requermets_list';

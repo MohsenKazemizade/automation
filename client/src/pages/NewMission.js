@@ -65,7 +65,6 @@ const NewMission = () => {
     if (show) setMainmission({ ...mainMission, id: '' });
   };
   const mainMissionChange = () => {
-    console.log('mainMission');
     for (let index = 0; index < data.length; index++) {
       if (data[index].Name === name) return alert('این ماموریت قبلا ثبت شده');
 

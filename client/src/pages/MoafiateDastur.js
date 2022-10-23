@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { Link } from 'react-router-dom';
 import TableMoafiatPezeshki from '../components/TableMoafiatPezeshki';
 import DropDownDastur from '../components/DropDownDastur';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 
 const MoafiateDastur = () => {
   return (
@@ -28,14 +28,14 @@ const MoafiateDastur = () => {
             </div>
 
             <div className='col-span-2'>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='rounded-lg h-16 flex text-center justify-center'>
               <span className='flex items-center'>ماموریت فرعی :</span>
             </div>
 
             <div className='col-span-2'>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
 
             <input

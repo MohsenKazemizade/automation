@@ -1,5 +1,5 @@
 import React from 'react';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
@@ -24,12 +24,12 @@ const MoafiatSanavat = () => {
               <span className='flex items-center'>ماموریت اصلی :</span>
             </div>
 
-            <DropDownMamooriat />
+            <DropDownMainMission />
             <div className='rounded-lg h-16 flex text-center justify-center'>
               <span className='flex items-center'>ماموریت فرعی :</span>
             </div>
 
-            <DropDownMamooriat />
+            <DropDownMainMission />
             <div class='col-span-2 flex items-center mb-4'>
               <input
                 id='default-checkbox'
@@ -48,7 +48,7 @@ const MoafiatSanavat = () => {
               <span className='flex items-center'>وضعیت :</span>
             </div>
 
-            <DropDownMamooriat />
+            <DropDownMainMission />
             <Link
               to='#'
               className='rounded-lg h-16 flex mb-4 text-center justify-center bg-gray-100 cursor-pointer hover:shadow-md active:shadow-sm'

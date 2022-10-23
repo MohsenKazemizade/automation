@@ -3,7 +3,7 @@ import TableRade from '../components/TableRade';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 import TableMoafiatRade from '../components/TableMoafiatRade';
 
 const MoafiateRade = () => {
@@ -23,7 +23,7 @@ const MoafiateRade = () => {
               <div></div>
 
               <div className='col-span-2'>
-                <DropDownMamooriat />
+                <DropDownMainMission />
               </div>
               <div className='rounded-lg h-16 flex text-center justify-center'>
                 <span className='flex items-center'>ماموریت فرعی :</span>
@@ -31,7 +31,7 @@ const MoafiateRade = () => {
               <div></div>
 
               <div className='col-span-2'>
-                <DropDownMamooriat />
+                <DropDownMainMission />
               </div>
               <div class='col-span-2 flex items-center mb-4'>
                 <input
@@ -64,7 +64,7 @@ const MoafiateRade = () => {
               <div></div>
 
               <div className='col-span-2'>
-                <DropDownMamooriat />
+                <DropDownMainMission />
               </div>
               <Link
                 to='#'

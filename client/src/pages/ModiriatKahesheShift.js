@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Table from '../components/Table';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 import { Link } from 'react-router-dom';
 
 const ModiriatKahesheShift = () => {
@@ -18,14 +18,14 @@ const ModiriatKahesheShift = () => {
               </div>
 
               <div className='col-span-3'>
-                <DropDownMamooriat />
+                <DropDownMainMission />
               </div>
               <div className='rounded-lg h-16 flex text-center justify-center'>
                 <span className='flex items-center'>ماموریت فرعی :</span>
               </div>
 
               <div className='col-span-3'>
-                <DropDownMamooriat />
+                <DropDownMainMission />
               </div>
 
               <Link

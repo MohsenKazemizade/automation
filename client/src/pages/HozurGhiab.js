@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
-import DropDownMamooriat from '../components/DropDownMamooriat';
+import DropDownMainMission from '../components/DropDownMainMission';
 
 const HozurGhiab = () => {
   return (
@@ -47,14 +47,14 @@ const HozurGhiab = () => {
             </div>
 
             <div>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='rounded-lg h-16 flex text-center justify-center'>
               <span className='flex items-center'>ماموریت فرعی :</span>
             </div>
 
             <div>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <input
               type='text'
@@ -86,14 +86,14 @@ const HozurGhiab = () => {
             </div>
 
             <div className='col-span-2'>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='rounded-lg h-16 flex text-center justify-center'>
               <span className='flex items-center'>ماموریت فرعی :</span>
             </div>
 
             <div className='col-span-2'>
-              <DropDownMamooriat />
+              <DropDownMainMission />
             </div>
             <div className='h-12 block w-full'></div>
 
