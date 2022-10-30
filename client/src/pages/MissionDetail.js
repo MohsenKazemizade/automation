@@ -5,8 +5,6 @@ import Table from '../components/Table';
 import DropDownListMission from '../components/DropDownListMission';
 import { Link } from 'react-router-dom';
 
-// const DropDownData = []
-// const OnDropDownSelectionChanged = ()=>{}
 const MissionDetail = () => {
   return (
     <div>

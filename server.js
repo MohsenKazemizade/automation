@@ -94,10 +94,8 @@ app.post('/api/post/submission', (req, res) => {
 // update data to sub_mission item
 app.put('/api/update/submission', (req, res) => {
   const { ids, subId } = req.body;
-  console.log();
-  const sqlSelectAll =
-    'UPDATE sub_mission SET id_requirements = ? WHERE ID = ?';
-  db.query(sqlSelectAll, [ids, subId], (err, result, fields) => {
+  const sqlSelectAll = `UPDATE sep_test.sub_mission SET id_requirements = '[${ids}]' WHERE (ID = ${subId})`;
+  db.query(sqlSelectAll, (err, result, fields) => {
     if (err) throw err;
     res.send(result);
   });

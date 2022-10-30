@@ -1,4 +1,3 @@
-//emtehan kon bebin value ids ro string koni kar mikone ya na age kar kard ke dge ye surate concat midam bere
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Footer from '../components/Footer';
@@ -15,14 +14,14 @@ const requirementsState = {
 // const addId = [];
 const VirayesheVizhegieMission = () => {
   const [data, setData] = useState([]);
-  // const [subId, setSubId] = useState(requirementsState);
   const [subData, setSubData] = useState([]);
   const [mainData, setMainData] = useState([]);
   const [subByMainIdData, setSubByMainIdData] = useState([]);
   const [requirements, setRequirements] = useState(requirementsState);
-  // const [requirementsForSubMission, setRequirementsForSubMission] =
-  //   useState(requirementsState);
+  const [requirementsText, setRequirementsText] = useState('');
   const { ids, subId } = requirements;
+  let idArray = [];
+
   const loadData = async () => {
     const response = await axios.get(
       'http://localhost:5000/api/get/mission_requerments'
@@ -49,17 +48,17 @@ const VirayesheVizhegieMission = () => {
 
   const addIdData = e => {
     const { name, id } = e.target;
-    let idds = requirements[name];
+    let idds = requirements[name].map(x => parseInt(x));
     if (requirements[name].includes(id)) return;
-    idds.push(id);
+    idds.push(parseInt(id));
     let addId = { ...requirements, [name]: idds };
     setRequirements(addId);
   };
   const clearIdData = e => {
     const { name, id } = e.target;
-    let idds = requirements[name];
-    if (requirements[name].includes(id)) {
-      idds = idds.filter(item => item !== id);
+    let idds = requirements[name].map(x => parseInt(x));
+    if (requirements[name].includes(parseInt(id))) {
+      idds = idds.filter(item => item !== parseInt(id));
       let addId = { ...requirements, [name]: idds };
       setRequirements(addId);
     }
@@ -77,7 +76,6 @@ const VirayesheVizhegieMission = () => {
       }
     }
   };
-
   const handleSubSelect = e => {
     const { name, value } = e.target;
     setRequirements({ ...requirements, [name]: value });
@@ -87,35 +85,43 @@ const VirayesheVizhegieMission = () => {
         requirementsBySubId.push({
           id: subData[index].id_requirements,
         });
-        // setRequirementsForSubMission(requirementsBySubId);
       }
     }
+    idArray = JSON.parse(requirementsBySubId[0].id);
+    handleTextBar(idArray);
   };
-
   const updateRequirements = () => {
-    // if (subId === '') return alert('ماموریت فرعی مورد نظر را انتخاب کنید');
-    // if (!requirements)
-    //   return alert('ویژگی های ماموریت مورد نظر را انتخاب کنید');
-
     axios
       .put('http://localhost:5000/api/update/submission', {
         ids,
         subId,
       })
       .catch(err => console.log(err));
-    // setMainData([]);
-    // console.log(requirements, subId);
 
-    // alert('ماموریت با موفقیت ثبت شد');
+    setRequirements(requirementsState);
+
+    alert('ویژگی های این ماموریت با موفقیت ثبت شد');
+    loadSubData();
   };
-
   const handleSubmit = e => {
     e.preventDefault();
     updateRequirements();
   };
-
-  // console.log(requirements.ids);
-  console.log(requirements);
+  const handleTextBar = array => {
+    let text = '';
+    if (array) {
+      for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < data.length; j++) {
+          if (data[j].ID == array[i]) {
+            text += '   ' + data[j].requerment_name + ' ,';
+          }
+        }
+      }
+      setRequirementsText(text);
+    } else {
+      setRequirementsText('');
+    }
+  };
 
   return (
     <div>
@@ -149,7 +155,7 @@ const VirayesheVizhegieMission = () => {
               id='default-text'
               type='text'
               disabled
-              // defaultValue={requirementsForSubMission}
+              defaultValue={requirementsText}
               className='w-full h-full text-gray-700 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
             />
           </div>
