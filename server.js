@@ -101,9 +101,9 @@ app.put('/api/update/submission', (req, res) => {
   });
 });
 
-// get all Mission_Requerments from requermets_list
+// get all Mission_Requerments from mission_requermets_list
 app.get('/api/get/mission_requerments', (req, res) => {
-  const sqlSelectAll = 'SELECT * FROM requermets_list';
+  const sqlSelectAll = 'SELECT * FROM mission_requermets_list';
   db.query(sqlSelectAll, (err, result, fields) => {
     if (err) throw err;
     res.send(result);
