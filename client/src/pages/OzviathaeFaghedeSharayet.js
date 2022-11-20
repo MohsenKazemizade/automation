@@ -47,17 +47,6 @@ const OzviathaeFaghedeSharayet = () => {
                   مشاهده آخرین
                 </label>
               </div>
-              {/* <div className='col-span-2'>
-                    <label htmlFor='vasiat'>
-                      <input
-                        type='checkbox'
-                        name='vasiat'
-                        id=''
-                        className='cursor-pointer m-4'
-                      />
-                      مشاهده آخرین
-                    </label>
-                  </div> */}
               <div className='rounded-lg h-16 flex text-center justify-center'>
                 <span className='flex items-center'>وضعیت :</span>
               </div>
